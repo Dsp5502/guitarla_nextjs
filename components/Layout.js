@@ -12,7 +12,6 @@ const Layout = ({ children, pagina }) => {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <Header />
-
       {children}
       <Footer />
     </div>

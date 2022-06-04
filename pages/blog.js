@@ -2,7 +2,6 @@ import Entrada from '../components/Entrada';
 import Layout from '../components/Layout';
 
 const Blog = ({ blogs }) => {
-  console.log(blogs);
   return (
     <Layout pagina='Blog'>
       <main className='contenedor'>

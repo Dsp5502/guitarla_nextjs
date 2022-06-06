@@ -7,7 +7,7 @@ const EntradaBlog = ({ blog }) => {
   console.log(blog);
   const { titulo, imagen, published_at, contenido } = blog;
   return (
-    <Layout>
+    <Layout pagina={titulo}>
       <main className='contenedor'>
         <h1 className='heading'>{titulo}</h1>
         <article className={styles.entrada}>
@@ -31,16 +31,16 @@ export async function getStaticPaths() {
   const url = `${process.env.API_URL}/blogs/`;
   const respuesta = await fetch(url);
   const blogs = await respuesta.json();
-  const paths = blogs.map((blog) => ({ params: { id: blog._id } }));
+  const paths = blogs.map((blog) => ({ params: { url: blog.url } }));
   return { paths, fallback: false };
 }
-export async function getStaticProps({ params: { id } }) {
-  const url = `${process.env.API_URL}/blogs/${id}`;
-  const respuesta = await fetch(url);
+export async function getStaticProps({ params: { url } }) {
+  const urlEnd = `${process.env.API_URL}/blogs?url=${url}`;
+  const respuesta = await fetch(urlEnd);
   const blog = await respuesta.json();
   return {
     props: {
-      blog,
+      blog: blog[0],
     },
   };
 }

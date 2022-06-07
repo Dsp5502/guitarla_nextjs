@@ -6,7 +6,6 @@ import styles from '../styles/Header.module.css';
 
 const Header = ({ guitarra }) => {
   const { pathname } = useRouter();
-  console.log(pathname);
   return (
     <header className={styles.header}>
       <div className='contenedor'>
@@ -28,6 +27,17 @@ const Header = ({ guitarra }) => {
             <Link href='/nosotros'>Nosotros</Link>
             <Link href='/blog'>Blog</Link>
             <Link href='/tienda'>Tienda</Link>
+            <Link href='/carrito'>
+              <a>
+                <Image
+                  layout='fixed'
+                  width={30}
+                  height={25}
+                  src='/img/carrito.png'
+                  alt='Imagen carrito'
+                />
+              </a>
+            </Link>
           </nav>
         </div>
         {guitarra && (

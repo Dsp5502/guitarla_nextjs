@@ -5,7 +5,6 @@ import Footer from './Footer';
 import Header from './Header';
 
 const Layout = ({ children, pagina, guitarra }) => {
-  console.log(guitarra);
   return (
     <div>
       <Head>

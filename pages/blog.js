@@ -1,18 +1,11 @@
-import Entrada from '../components/Entrada';
+import BlogListado from '../components/BlogListado';
 import Layout from '../components/Layout';
-import styles from '../styles/blog.module.css';
 
-const Blog = ({ blogs }) => {
+const Blog = ({ blog }) => {
   return (
     <Layout pagina='Blog'>
       <main className='contenedor'>
-        <h2 className='heading'>Blog</h2>
-        <div className={styles.blog}>
-          {blogs.map((blog) => (
-            <Entrada key={blog._id} blog={blog} />
-          ))}
-        </div>
-        {}
+        <BlogListado blog={blog} />
       </main>
     </Layout>
   );
@@ -20,11 +13,11 @@ const Blog = ({ blogs }) => {
 export async function getStaticProps() {
   const url = `${process.env.API_URL}/blogs?_sort=created_at:desc`;
   const respuesta = await fetch(url);
-  const blogs = await respuesta.json();
+  const blog = await respuesta.json();
 
   return {
     props: {
-      blogs,
+      blog,
     },
   };
 }
